@@ -1,0 +1,19 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Angular",
+      "description": "Angular is a platform and set of tools for building applications with HTML and TypeScript."
+    },
+    {
+      "id": 2,
+      "name": "React",
+      "description": "React is a JavaScript library for building user interfaces."
+    },
+    {
+      "id": 3,
+      "name": "Vue",
+      "description": "Vue.js is an open-source model–view–viewmodel front end JavaScript framework for building user interfaces and single-page applications."
+    }
+  ]
+}
