@@ -15,7 +15,7 @@
         [routerLinkActiveOptions]="{ exact: true }"
         routerLink="projects"
         class="nav-link"
-        >project</a
+        >projects</a
       >
       <ul>
         <li>
@@ -27,7 +27,11 @@
           </a>
         </li>
         <li>
-          <a routerLinkActive="active" [routerLink]="['/projects', 2]">
+          <a
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="active"
+            [routerLink]="['/projects', 2]"
+          >
             project 2</a
           >
         </li>
@@ -42,9 +46,10 @@
         </li>
         <li>
           <a
-            routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
-            routerLink="projects/4"
+            routerLinkActive="active"
+            [routerLink]="'project'"
+            [queryParams]="{ id: 4 }"
           >
             project 4
           </a>
@@ -52,12 +57,17 @@
       </ul>
     </li>
     <li>
+      <a routerLinkActive="active" routerLink="contact" class="nav-link"
+        >contact
+      </a>
+    </li>
+    <li>
       <a
         routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        routerLink="contact"
+        routerLink="project"
         class="nav-link"
-        >contact
+        [queryParams]="{ id: 10 }"
+        >about us
       </a>
     </li>
   </ul>

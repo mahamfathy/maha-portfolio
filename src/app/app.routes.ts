@@ -19,10 +19,19 @@ export const routes: Routes = [
     path: 'projects',
     component: ProjectsComponent,
   },
+  {
+    path: 'project',
+    component: ProjectComponent,
+  },
+
   { path: 'projects/:id', component: ProjectComponent },
   {
     path: 'contact',
     component: ContactComponent,
+  },
+  {
+    path: 'about-us',
+    component: HomeComponent,
   },
   {
     path: '',
