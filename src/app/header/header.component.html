@@ -1,7 +1,64 @@
 <p>header works!</p>
 <nav class="nav">
-  <li><a routerLink="home" class="nav-link">home</a></li>
-  <li><a routerLink="resume" class="nav-link">resume</a></li>
-  <li><a routerLink="projects" class="nav-link">project</a></li>
-  <li><a routerLink="contact" class="nav-link">contact </a></li>
+  <ul>
+    <li>
+      <a routerLinkActive="active" routerLink="home" class="nav-link">home</a>
+    </li>
+    <li>
+      <a routerLinkActive="active" routerLink="resume" class="nav-link"
+        >resume</a
+      >
+    </li>
+    <li>
+      <a
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLink="projects"
+        class="nav-link"
+        >project</a
+      >
+      <ul>
+        <li>
+          <a
+            routerLinkActive="active"
+            [routerLink]="['projects', 1]"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >project 1
+          </a>
+        </li>
+        <li>
+          <a routerLinkActive="active" [routerLink]="['/projects', 2]">
+            project 2</a
+          >
+        </li>
+        <li>
+          <a
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLink="projects/3"
+          >
+            project 3</a
+          >
+        </li>
+        <li>
+          <a
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLink="projects/4"
+          >
+            project 4
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLink="contact"
+        class="nav-link"
+        >contact
+      </a>
+    </li>
+  </ul>
 </nav>
