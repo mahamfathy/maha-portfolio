@@ -7,7 +7,7 @@ import { Observable, throwError } from 'rxjs';
 })
 export class HandleErrorService {
   constructor() {}
-  private handleError(errorRes: HttpErrorResponse): Observable<any> {
+  handleError(errorRes: HttpErrorResponse): Observable<any> {
     if (errorRes.status === 0) {
       console.error(
         'client-side' +
