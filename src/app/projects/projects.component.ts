@@ -16,8 +16,9 @@ export class ProjectsComponent implements OnInit {
   constructor(private projectsService: ProjectsService) {}
   ngOnInit(): void {
     this.projectsService.getProjects().subscribe((projects) => {
+      console.log(projects);
       this.projects = projects;
-      console.log(this.projects);
+      console.log(this.projects.forEach((project) => console.log(project)));
     });
   }
 }
