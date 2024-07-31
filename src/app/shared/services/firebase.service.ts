@@ -6,7 +6,7 @@ import { firebaseUrl } from '../firebase/firebase-url';
 @Injectable()
 export class FirebaseService {
   constructor(private http: HttpClient) {}
-  getRequest(name: string): Observable<any> {
-    return this.http.get(`${firebaseUrl}${name}.json`);
+  getRequest<T>(name: string): Observable<T> {
+    return this.http.get<T>(`${firebaseUrl}${name}.json`);
   }
 }
