@@ -2,10 +2,13 @@ import {
   AfterContentInit,
   Component,
   ContentChild,
+  ContentChildren,
   ElementRef,
   OnInit,
+  QueryList,
 } from '@angular/core';
 import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
+import { SocialMediaDirective } from '../../contact/social-media.directive';
 
 @Component({
   selector: 'app-project',
@@ -16,6 +19,10 @@ import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
 })
 export class ProjectComponent implements OnInit, AfterContentInit {
   @ContentChild('content') contentChild?: ElementRef<HTMLElement>;
+  @ContentChildren(SocialMediaDirective) top?: QueryList<SocialMediaDirective>;
+  @ContentChildren(SocialMediaDirective, { descendants: true })
+  nested?: QueryList<SocialMediaDirective>;
+
   constructor(private activatedroute: ActivatedRoute, private router: Router) {}
   ngOnInit(): void {
     // not preffered to use them as they are static
@@ -27,18 +34,18 @@ export class ProjectComponent implements OnInit, AfterContentInit {
 
     //subscribtion is better and dynamic observable
     this.activatedroute.params.subscribe((res: Params) => {
-      console.log(res['id'], typeof res['id']);
+      // console.log(res['id'], typeof res['id']);
     });
     // or
     this.activatedroute.paramMap.subscribe((res: ParamMap) => {
-      console.log(res.get('id'));
+      // console.log(res.get('id'));
     });
     const id = this.activatedroute.queryParams.subscribe((res) => {
       const id = Number(res['id']);
-      console.log(id);
+      // console.log(id);
     });
     this.activatedroute.queryParamMap.subscribe((res) => {
-      console.log(` query param map ${res.get('id')}`);
+      // console.log(` query param map ${res.get('id')}`);
     });
   }
 
@@ -55,10 +62,19 @@ export class ProjectComponent implements OnInit, AfterContentInit {
       queryParamsHandling: 'merge',
     });
   }
+  // ngAfterContentInit(): void {
+  //   if (this.contentChild) {
+  //     this.contentChild.nativeElement.style.color = 'red';
+  //     console.log('content child ', this.contentChild.nativeElement.innerHTML);
+  //   }
+  // }
   ngAfterContentInit(): void {
-    if (this.contentChild) {
-      this.contentChild.nativeElement.style.color = 'red';
-      console.log('content child ', this.contentChild.nativeElement.innerHTML);
-    }
+    console.log('top', this.top);
+  }
+  get getTop(): string {
+    return this.top ? this.top.map((n) => n.name).join(' / ') : '';
+  }
+  get getNested(): string {
+    return this.nested ? this.nested.map((n) => n.name).join(' / ') : '';
   }
 }

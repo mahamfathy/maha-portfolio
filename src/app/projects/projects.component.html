@@ -1,7 +1,21 @@
-<p>projects works!</p>
+<!-- <p>projects works!</p>
 @for (project of projects; track project.id) {
 <app-project>
   <h1 #content>hello here is contentchild 1</h1>
   <h1 #content>hello here is contentchild 2</h1>
 </app-project>
-}
+}  -->
+
+<app-project>
+  <social-media name="facebook"></social-media>
+  <social-media name="twitter"></social-media>
+  <social-media name="linkedin"></social-media>
+  <!-- nested -->
+  @if (showNested) {
+  <app-project>
+    <social-media name="github"></social-media>
+    <social-media name="instagram"></social-media>
+  </app-project>
+  }
+</app-project>
+<button (click)="toggleNested()">Show Nested</button>

@@ -6,6 +6,7 @@ import {
   QueryList,
   ViewChildren,
 } from '@angular/core';
+import { SocialMediaDirective } from '../contact/social-media.directive';
 import { Project } from '../shared/models/project';
 import { ProjectsService } from '../shared/services/projects.service';
 import { ProjectComponent } from './project/project.component';
@@ -13,11 +14,12 @@ import { ProjectComponent } from './project/project.component';
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, ProjectComponent],
+  imports: [CommonModule, ProjectComponent, SocialMediaDirective],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
 })
 export class ProjectsComponent implements OnInit, AfterViewInit {
+  showNested = false;
   @ViewChildren(ProjectComponent) children?: QueryList<ProjectComponent>;
   projects: Project[] = [];
   constructor(private projectsService: ProjectsService) {}
@@ -33,5 +35,8 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
       console.log('res', res);
     });
     console.log('AfterViewInit children', this.children);
+  }
+  toggleNested(): void {
+    this.showNested = !this.showNested;
   }
 }
