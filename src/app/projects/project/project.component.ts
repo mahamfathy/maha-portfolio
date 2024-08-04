@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChild,
+  ElementRef,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
 
 @Component({
@@ -8,7 +14,8 @@ import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
   templateUrl: './project.component.html',
   styleUrl: './project.component.scss',
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent implements OnInit, AfterContentInit {
+  @ContentChild('content') contentChild?: ElementRef<HTMLElement>;
   constructor(private activatedroute: ActivatedRoute, private router: Router) {}
   ngOnInit(): void {
     // not preffered to use them as they are static
@@ -47,5 +54,11 @@ export class ProjectComponent implements OnInit {
       },
       queryParamsHandling: 'merge',
     });
+  }
+  ngAfterContentInit(): void {
+    if (this.contentChild) {
+      this.contentChild.nativeElement.style.color = 'red';
+      console.log('content child ', this.contentChild.nativeElement.innerHTML);
+    }
   }
 }

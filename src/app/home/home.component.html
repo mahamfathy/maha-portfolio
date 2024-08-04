@@ -1,1 +1,8 @@
-<p>home works!</p>
+@if (isVisible ) {
+
+<p #title>home works!</p>
+<app-project #child></app-project>
+
+}
+<app-contact #contact></app-contact>
+<button (click)="toggle()">Toggle</button>

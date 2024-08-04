@@ -1,4 +1,7 @@
 <p>projects works!</p>
 @for (project of projects; track project.id) {
-<app-project></app-project>
+<app-project>
+  <h1 #content>hello here is contentchild 1</h1>
+  <h1 #content>hello here is contentchild 2</h1>
+</app-project>
 }
